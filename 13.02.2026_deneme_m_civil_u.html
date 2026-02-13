@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Caner Usta — Bulmacalar</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="top">
+      <h1>Caner Usta</h1>
+      <p>HTML • CSS • JavaScript projeleri + bulmacalar</p>
+      <nav class="nav">
+        <a href="#projeler">Projeler</a>
+        <a href="#bulmacalar">Bulmacalar</a>
+        <a href="#iletisim">İletişim</a>
+      </nav>
+    </header>
+
+    <main class="wrap">
+      <section id="projeler" class="card">
+        <h2>Projeler</h2>
+        <ul>
+          <li>🎮 Mini oyunlar (Canvas)</li>
+          <li>🧩 Interaktif bulmacalar</li>
+          <li>⚙️ Küçük otomasyonlar</li>
+        </ul>
+      </section>
+
+      <section id="bulmacalar" class="card">
+        <h2>Bugünün Bulmacası</h2>
+        <p class="q">Sayı: <b>42</b>. “Bunun yarısı kaç?”</p>
+
+        <div class="row">
+          <input id="answer" type="number" placeholder="Cevap..." />
+          <button id="check">Kontrol et</button>
+        </div>
+
+        <p id="result" class="result"></p>
+      </section>
+
+      <section id="iletisim" class="card">
+        <h2>İletişim</h2>
+        <p>E-posta / LinkedIn linklerini buraya koyabilirsin.</p>
+      </section>
+    </main>
+
+    <footer class="foot">© <span id="year"></span> Caner Usta</footer>
+
+    <script>
+      const answer = document.getElementById("answer");
+      const check = document.getElementById("check");
+      const result = document.getElementById("result");
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const correct = 42 / 2;
+
+      check.addEventListener("click", () => {
+        const v = Number(answer.value);
+        if (!answer.value) {
+          result.textContent = "Bir sayı gir.";
+          return;
+        }
+        result.textContent =
+          v === correct
+            ? "✅ Doğru! Bir sonraki bulmacaya geçebiliriz."
+            : "❌ Yanlış. Tekrar dene.";
+      });
+    </script>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial;
+        background: #0b0f14;
+        color: #e8eef6;
+      }
+      .top {
+        padding: 28px 16px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .nav {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
+      .nav a {
+        color: #9ecbff;
+        text-decoration: none;
+        padding: 6px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 999px;
+      }
+      .wrap {
+        width: min(900px, 92vw);
+        margin: 18px auto;
+        display: grid;
+        gap: 14px;
+        padding: 0 0 28px;
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 16px;
+        padding: 16px;
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
+      input,
+      button {
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(0, 0, 0, 0.25);
+        color: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      .result {
+        margin-top: 10px;
+        min-height: 1.2em;
+      }
+      .foot {
+        opacity: 0.7;
+        text-align: center;
+        padding: 14px;
+      }
+    </style>
+  </body>
+</html>
